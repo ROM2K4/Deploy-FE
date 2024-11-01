@@ -8,7 +8,6 @@ import {
   Descriptions,
   Image,
   Modal,
-  Rate,
   Row,
   Select,
   Spin,
@@ -60,7 +59,7 @@ function DetailKoi() {
   const fetchKoiById = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/koi-fishes/koiFish/${id}`,
+        `http://14.225.210.143:8080/api/koi-fishes/koiFish/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -79,7 +78,7 @@ function DetailKoi() {
   const fetchCertificateById = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/certificates/${id}/fish-certificate`, // Đảm bảo URL đúng
+        `http://14.225.210.143:8080/api/certificates/${id}/fish-certificate`, // Đảm bảo URL đúng
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -124,7 +123,7 @@ function DetailKoi() {
   const fetchBreeds = async () => {
     try {
       const response = await apiKoi.get(
-        "http://localhost:8080/api/breeds/list-breedName",
+        "http://14.225.210.143:8080/api/breeds/list-breedName",
         {
           // Giả sử API lấy danh sách breed là /breeds
           headers: {
@@ -179,16 +178,20 @@ function DetailKoi() {
 
   return (
     <div className="full-koi">
-      <h1>Thông tin cá {koi.fishName}</h1>
+      <h1>Thông tin cá {koi ? koi.fishName : "đang tải..."}</h1>
 
       <div className="koi-info">
         <Row>
           <Col className="img-price" span={12}>
-            <img src={koi.image} alt="" />
+            <img
+              src={koi && koi.image ? koi.image : "link/to/default-image.jpg"}
+              alt={koi ? koi.fishName : "Đang tải..."}
+              
+            />
 
             <p className="price">
               <strong>Giá: </strong>
-              {koi.price.toLocaleString()} VND
+              {koi && koi.price ? `${koi.price.toLocaleString()} VND` : 'Loading'}
             </p>
 
             <Button
@@ -204,24 +207,24 @@ function DetailKoi() {
             {koi && (
               <Descriptions bordered column={1}>
                 <Descriptions.Item label="Description">
-                  {koi.description}
+                {koi && koi.description ? koi.description : 'Loading'}
                 </Descriptions.Item>
-                <Descriptions.Item label="Breed">{koi.breed}</Descriptions.Item>
+                <Descriptions.Item label="Breed">{koi && koi.breed ? koi.breed : 'Loading'}</Descriptions.Item>
                 <Descriptions.Item label="Origin">
-                  {koi.origin}
+                {koi && koi.origin ? koi.origin : 'Loading'}
                 </Descriptions.Item>
                 <Descriptions.Item label="Gender">
-                  {koi.gender ? "Male" : "Female"}
+                {koi && koi.gender !== null ? (koi.gender ? 'Male' : 'Female') : 'Loading'}
                 </Descriptions.Item>
                 <Descriptions.Item label="Birth day">
-                  {koi.birthDate}
+                {koi && koi.birthDate ? koi.birthDate : 'Loading'}
                 </Descriptions.Item>
-                <Descriptions.Item label="Diet">{koi.diet}</Descriptions.Item>
-                <Descriptions.Item label="Size">{koi.size}</Descriptions.Item>
+                <Descriptions.Item label="Diet">{koi && koi.diet ? koi.diet : 'Loading'}</Descriptions.Item>
+                <Descriptions.Item label="Size">{koi && koi.size ? `${koi.size} cm` : 'Loading'}</Descriptions.Item>
 
-                <Descriptions.Item label="Food">{koi.food}</Descriptions.Item>
+                <Descriptions.Item label="Food">{koi && koi.food ? koi.food : 'Loading'}</Descriptions.Item>
                 <Descriptions.Item label="Screening rate">
-                  {koi.screeningRate}
+                {koi && koi.screeningRate ? koi.screeningRate : 'Loading'}
                 </Descriptions.Item>
 
                 {/* Hiển thị chứng nhận */}

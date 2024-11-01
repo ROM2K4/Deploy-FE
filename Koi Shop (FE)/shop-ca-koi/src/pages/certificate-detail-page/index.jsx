@@ -15,7 +15,7 @@ function Certificate() {
   async function listCertificates() {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/certificates/${koiId}/fish-certificate`,
+        `http://14.225.210.143:8080/api/certificates/${koiId}/fish-certificate`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -37,7 +37,7 @@ function Certificate() {
 
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/certificates/${koiId}/add-certificate`,
+        `http://14.225.210.143:8080/api/certificates/${koiId}/add-certificate`,
         { image: values.image }, // Đảm bảo image được truyền đúng
         {
           headers: {
@@ -59,7 +59,7 @@ function Certificate() {
   // Hàm để xóa một chứng chỉ
   async function deleteCertificate(id) {
     try {
-      await axios.delete(`http://localhost:8080/api/certificates/${id}`, {
+      await axios.delete(`http://14.225.210.143:8080/api/certificates/${id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

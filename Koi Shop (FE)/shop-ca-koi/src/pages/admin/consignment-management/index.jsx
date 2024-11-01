@@ -19,7 +19,7 @@ function ConsignmentManagement() {
     const fetchConsignment = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/consignments/list-consignments",
+          "http://14.225.210.143:8080/api/consignments/list-consignments",
           {
             headers: {
               Authorization: `Bearer ${user.token}`, // Gửi token trong header
@@ -40,7 +40,7 @@ function ConsignmentManagement() {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/consignments/${id}`,
+        `http://14.225.210.143:8080/api/consignments/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -80,7 +80,7 @@ function ConsignmentManagement() {
     try {
       const updatedValues = form.getFieldsValue();
       const response = await axios.put(
-        `http://localhost:8080/api/consignments/${currentConsignment.id}/update`, // Sử dụng currentConsignment.id
+        `http://14.225.210.143:8080/api/consignments/${currentConsignment.id}/update`, // Sử dụng currentConsignment.id
         updatedValues,
         {
           headers: {

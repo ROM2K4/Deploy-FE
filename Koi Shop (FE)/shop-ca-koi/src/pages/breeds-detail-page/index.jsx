@@ -17,7 +17,7 @@ function BreedDetail() {
     async function fetchBreedDetails() {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/breeds/${breedName}`,
+          `http://14.225.210.143:8080/api/breeds/${breedName}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -46,7 +46,7 @@ function BreedDetail() {
   const handleUpdate = async (values) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/breeds/${breedName}/update`, // Cập nhật URL API
+        `http://14.225.210.143:8080/api/breeds/${breedName}/update`, // Cập nhật URL API
         values,
         {
           headers: {

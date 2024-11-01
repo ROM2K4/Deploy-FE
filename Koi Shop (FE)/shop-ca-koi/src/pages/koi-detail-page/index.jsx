@@ -29,7 +29,7 @@ function KoiDetail() {
     async function fetchKoiDetails() {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/koi-fishes/koiFish/${koiID}`,
+          `http://14.225.210.143:8080/api/koi-fishes/koiFish/${koiID}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -61,7 +61,7 @@ function KoiDetail() {
   const handleUpdate = async (values) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/koi-fishes/${koiID}/update`, // Cập nhật URL API
+        `http://14.225.210.143:8080/api/koi-fishes/${koiID}/update`, // Cập nhật URL API
         {
           ...values,
           birthDate: values.birthDate ? values.birthDate.toISOString() : null, // Đảm bảo giá trị birthDate là chuỗi ISO

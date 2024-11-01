@@ -52,7 +52,7 @@ const Cart = () => {
     try {
       // Gọi API với phương thức GET và truyền mã voucher vào URL
       const response = await axios.get(
-        `http://localhost:8080/api/promotions/${voucherCode}/discount`,
+        `http://14.225.210.143:8080/api/promotions/${voucherCode}/discount`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -100,7 +100,7 @@ const Cart = () => {
   const fetchPoint = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/user/customer-point`,
+        `http://14.225.210.143:8080/api/user/customer-point`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

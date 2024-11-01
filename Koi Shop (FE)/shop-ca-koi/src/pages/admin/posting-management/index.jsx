@@ -18,7 +18,7 @@ function Posting() {
   async function loadPostingList() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/posting/list-postings",
+        "http://14.225.210.143:8080/api/posting/list-postings",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -35,7 +35,7 @@ function Posting() {
   async function addPosting(data) {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/posting/add-posting",
+        "http://14.225.210.143:8080/api/posting/add-posting",
         data,
         {
           headers: {
@@ -54,7 +54,7 @@ function Posting() {
   async function deletePosting(id) {
     try {
       await axios.delete(
-        `http://localhost:8080/api/posting/${id}/delete-posting`,
+        `http://14.225.210.143:8080/api/posting/${id}/delete-posting`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -71,7 +71,7 @@ function Posting() {
   async function updatePosting(id, data) {
     try {
       await axios.put(
-        `http://localhost:8080/api/posting/${id}/update-posting`,
+        `http://14.225.210.143:8080/api/posting/${id}/update-posting`,
         data,
         {
           headers: {
@@ -89,7 +89,7 @@ function Posting() {
   async function fetchPostDetail(id) {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/posting/${id}/get-posting`,
+        `http://14.225.210.143:8080/api/posting/${id}/get-posting`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

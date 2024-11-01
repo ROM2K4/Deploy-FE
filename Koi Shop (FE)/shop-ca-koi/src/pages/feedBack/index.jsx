@@ -13,7 +13,7 @@ function FeedBackUI() {
   const fetchFeedback = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/ratings-feedbacks/list-ratingsfeedbacks",
+        "http://14.225.210.143:8080/api/ratings-feedbacks/list-ratingsfeedbacks",
         {
           headers: {
             Authorization: `Bearer ${user.token}`, // Gửi token trong header

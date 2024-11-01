@@ -19,7 +19,7 @@ const OrderDetails = () => {
     const fetchOrderDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/orders/${orderId}`,
+          `http://14.225.210.143:8080/api/orders/${orderId}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`, // Gửi token trong header
@@ -51,7 +51,7 @@ const OrderDetails = () => {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/consignments/add-consignment",
+        "http://14.225.210.143:8080/api/consignments/add-consignment",
         consignmentData,
         {
           headers: {

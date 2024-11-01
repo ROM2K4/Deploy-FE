@@ -24,7 +24,7 @@ function Promotion() {
   async function loadPromotionList() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/promotions/list-promotions",
+        "http://14.225.210.143:8080/api/promotions/list-promotions",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -60,14 +60,14 @@ function Promotion() {
       if (selectedPromotion) {
         // Cập nhật promotion
         await axios.put(
-          `http://localhost:8080/api/promotions/${selectedPromotion.promotionID}`,
+          `http://14.225.210.143:8080/api/promotions/${selectedPromotion.promotionID}`,
           promotionData,
           config // Đưa config vào đây
         );
       } else {
         // Thêm mới promotion
         await axios.post(
-          "http://localhost:8080/api/promotions/add-promotion",
+          "http://14.225.210.143:8080/api/promotions/add-promotion",
           promotionData,
           config // Đưa config vào đây
         );
@@ -87,7 +87,7 @@ function Promotion() {
   const deletePromotion = async (promotionID) => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/promotions/${promotionID}`,
+        `http://14.225.210.143:8080/api/promotions/${promotionID}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

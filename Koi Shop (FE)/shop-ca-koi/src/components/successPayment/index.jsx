@@ -23,7 +23,7 @@ const PaymentSuccess = () => {
   const updateUserPoints = async (points) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/user/usePoint`,
+        `http://14.225.210.143:8080/api/user/usePoint`,
         {
           point: points,
         },
@@ -47,7 +47,7 @@ const PaymentSuccess = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/ratings-feedbacks/add-ratingsfeedback",
+        "http://14.225.210.143:8080/api/ratings-feedbacks/add-ratingsfeedback",
         values,
         {
           headers: {
@@ -71,7 +71,7 @@ const PaymentSuccess = () => {
     const updateOrderStatus = async (status) => {
       try {
         await axios.put(
-          `http://localhost:8080/api/orders/${orderId}/update-status`,
+          `http://14.225.210.143:8080/api/orders/${orderId}/update-status`,
           null, // Tham số body không cần thiết ở đây
           {
             params: { status }, // Truyền tham số status qua query params
@@ -97,7 +97,7 @@ const PaymentSuccess = () => {
     const fetchOrder = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/orders/${orderId}`,
+          `http://14.225.210.143:8080/api/orders/${orderId}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,

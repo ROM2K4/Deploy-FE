@@ -36,7 +36,7 @@ function AddConsignment() {
   const fetchBreeds = async () => {
     try {
       const response = await apiKoi.get(
-        "http://localhost:8080/api/breeds/list-breedName",
+        "http://14.225.210.143:8080/api/breeds/list-breedName",
         {
           // Giả sử API lấy danh sách breed là /breeds
           headers: {
@@ -54,7 +54,7 @@ function AddConsignment() {
   const fetchOrigins = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/origin/list-originName",
+        "http://14.225.210.143:8080/api/origin/list-originName",
         {
           // Giả sử API lấy danh sách breed là /origin
           headers: {

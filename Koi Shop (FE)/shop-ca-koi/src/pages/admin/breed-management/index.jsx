@@ -17,7 +17,7 @@ function Breed() {
   async function fetchBreed(data) {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/breeds/add-breed", // Thay đổi endpoint nếu cần
+        "http://14.225.210.143:8080/api/breeds/add-breed", // Thay đổi endpoint nếu cần
         data,
         {
           headers: {
@@ -37,7 +37,7 @@ function Breed() {
   async function loadBreedList() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/breeds/list-breeds", // Sử dụng endpoint bạn cung cấp
+        "http://14.225.210.143:8080/api/breeds/list-breeds", // Sử dụng endpoint bạn cung cấp
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -54,7 +54,7 @@ function Breed() {
   // Hàm để xóa một breed
   async function deleteBreed(id) {
     try {
-      await axios.delete(`http://localhost:8080/api/breeds/${id}`, {
+      await axios.delete(`http://14.225.210.143:8080/api/breeds/${id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

@@ -34,7 +34,7 @@ function KoiList() {
 
   const fetchKoiByBreed = async (breed, page = 0) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/koi-fishes/${breed}?page=${page}`, {
+      const response = await axios.get(`http://14.225.210.143:8080/api/koi-fishes/${breed}?page=${page}`, {
         headers: {
           Authorization: `Bearer ${user.token}`, // Gửi token trong header
         },
@@ -73,7 +73,7 @@ function KoiList() {
   const fetchBreeds = async () => {
     try {
       const response = await apiKoi.get(
-        "http://localhost:8080/api/breeds/list-breedName",
+        "http://14.225.210.143:8080/api/breeds/list-breedName",
         {
           // Giả sử API lấy danh sách breed là /breeds
           headers: {

@@ -31,7 +31,7 @@ function UserDetail() {
     async function fetchUserDetails() {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/user/${id}/detail`,
+          `http://14.225.210.143:8080/api/user/${id}/detail`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -63,7 +63,7 @@ function UserDetail() {
   const handleUpdate = async (values) => {
     try {
       await axios.put(
-        `http://localhost:8080/api/user/${id}/update`,
+        `http://14.225.210.143:8080/api/user/${id}/update`,
         {
           ...values,
           joinDate: values.joinDate ? values.joinDate.toISOString() : null, // Chuyển đổi joinDate thành chuỗi ISO

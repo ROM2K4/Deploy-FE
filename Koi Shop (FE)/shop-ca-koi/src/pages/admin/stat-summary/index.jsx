@@ -17,7 +17,7 @@ function StatSummary() {
     const fetchStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/dashboard/stats",
+          "http://14.225.210.143:8080/api/dashboard/stats",
           {
             headers: {
               Authorization: `Bearer ${user.token}`, // Gửi token trong header

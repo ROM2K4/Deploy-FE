@@ -15,7 +15,7 @@ function Income() {
   // Hàm lấy dữ liệu từ API
   const fetchIncomeData = async (year) => {
     try {
-      const response = await axios.get("http://localhost:8080/api/dashboard/income", {
+      const response = await axios.get("http://14.225.210.143:8080/api/dashboard/income", {
         headers: {
           Authorization: `Bearer ${user.token}`, // Gửi token trong header
         },

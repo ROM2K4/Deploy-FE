@@ -36,7 +36,7 @@ function Batch() {
   async function loadBatchList() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/batches/getbatches",
+        "http://14.225.210.143:8080/api/batches/getbatches",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -61,8 +61,8 @@ function Batch() {
 
   const fetchBreeds = async () => {
     try {
-      const response = await apiKoi.get(
-        "http://localhost:8080/api/breeds/list-breedName",
+      const response = await axios.get(
+        "http://14.225.210.143:8080/api/breeds/list-breedName",
         {
           // Giả sử API lấy danh sách breed là /breeds
           headers: {
@@ -102,7 +102,7 @@ function Batch() {
       if (selectedBatch) {
         // Gọi API PUT khi cập nhật batch
         await axios.put(
-          `http://localhost:8080/api/batches/${selectedBatch.id}/update`,
+          `http://14.225.210.143:8080/api/batches/${selectedBatch.id}/update`,
           batchData,
           config
         );
@@ -114,7 +114,7 @@ function Batch() {
       } else {
         // Gọi API POST khi tạo batch mới
         await axios.post(
-          "http://localhost:8080/api/batches/create-batch",
+          "http://14.225.210.143:8080/api/batches/create-batch",
           batchData,
           config
         );
@@ -144,7 +144,7 @@ function Batch() {
     console.log("Batch ID to delete:", id); // Kiểm tra giá trị id
     try {
       await axios.put(
-        `http://localhost:8080/api/batches/${id}/delete`,
+        `http://14.225.210.143:8080/api/batches/${id}/delete`,
         {},
         {
           headers: {
@@ -186,7 +186,7 @@ function Batch() {
     try {
       // Gửi yêu cầu cập nhật trạng thái isForSale
       await axios.put(
-        `http://localhost:8080/api/batches/${id}/update-isSale`,
+        `http://14.225.210.143:8080/api/batches/${id}/update-isSale`,
         {},
         {
           headers: {

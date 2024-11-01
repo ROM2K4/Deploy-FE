@@ -13,7 +13,7 @@ function OrderDetailAdmin() {
     const fetchOrderDetailByOrderId = async (id) => {
         try {
           const response = await axios.get(
-            `http://localhost:8080/api/order-details/${id}/list-order-orderDetails`,
+            `http://14.225.210.143:8080/api/order-details/${id}/list-order-orderDetails`,
             {
               headers: {
                 Authorization: `Bearer ${user.token}`,

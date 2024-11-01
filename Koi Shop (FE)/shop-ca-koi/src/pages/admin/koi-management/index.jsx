@@ -32,7 +32,7 @@ function Koi() {
   async function fetchKoi(data) {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/koi-fishes/add",
+        "http://14.225.210.143:8080/api/koi-fishes/add",
         data,
         {
           headers: {
@@ -51,7 +51,7 @@ function Koi() {
   async function loadKoiList() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/koi-fishes/listfish",
+        "http://14.225.210.143:8080/api/koi-fishes/listfish",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -74,7 +74,7 @@ function Koi() {
     try {
       // Thay đổi từ axios.delete sang axios.put để cập nhật trạng thái deleted
       await axios.put(
-        `http://localhost:8080/api/koi-fishes/${id}/delete`,
+        `http://14.225.210.143:8080/api/koi-fishes/${id}/delete`,
         {}, // body rỗng vì chỉ cập nhật trạng thái
         {
           headers: {
@@ -100,7 +100,7 @@ function Koi() {
     try {
       // Gửi yêu cầu cập nhật trạng thái isForSale
       await axios.put(
-        `http://localhost:8080/api/koi-fishes/${id}/updateIsForSale`,
+        `http://14.225.210.143:8080/api/koi-fishes/${id}/updateIsForSale`,
         {},
         {
           headers: {
@@ -228,7 +228,7 @@ function Koi() {
   const fetchBreeds = async () => {
     try {
       const response = await apiKoi.get(
-        "http://localhost:8080/api/breeds/list-breedName",
+        "http://14.225.210.143:8080/api/breeds/list-breedName",
         {
           // Giả sử API lấy danh sách breed là /breeds
           headers: {
@@ -245,7 +245,7 @@ function Koi() {
   const fetchOrigins = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/origin/list-originName",
+        "http://14.225.210.143:8080/api/origin/list-originName",
         {
           // Giả sử API lấy danh sách breed là /origin
           headers: {

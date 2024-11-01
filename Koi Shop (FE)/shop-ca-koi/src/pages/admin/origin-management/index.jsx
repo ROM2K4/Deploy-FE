@@ -15,7 +15,7 @@ function Origin() {
   async function fetchOrigin(data) {
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/origin", // Thay đổi endpoint nếu cần
+        "http://14.225.210.143:8080/api/origin", // Thay đổi endpoint nếu cần
         data,
         {
           headers: {
@@ -35,7 +35,7 @@ function Origin() {
   async function loadOriginList() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/origin/list", // Sử dụng endpoint bạn cung cấp
+        "http://14.225.210.143:8080/api/origin/list", // Sử dụng endpoint bạn cung cấp
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -52,7 +52,7 @@ function Origin() {
   // Hàm để xóa một origin
   async function deleteOrigin(id) {
     try {
-      await axios.delete(`http://localhost:8080/api/origin/${id}`, {
+      await axios.delete(`http://14.225.210.143:8080/api/origin/${id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

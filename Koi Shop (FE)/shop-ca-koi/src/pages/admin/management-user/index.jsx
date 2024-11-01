@@ -14,7 +14,7 @@ function User() {
   async function loadUserList() {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/user/list-user",
+        "http://14.225.210.143:8080/api/user/list-user",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -37,7 +37,7 @@ function User() {
   const deleteUser = async (userID) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/user/${userID}/delete`,
+        `http://14.225.210.143:8080/api/user/${userID}/delete`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

@@ -26,7 +26,7 @@ function ConfirmConsign() {
 
     try {
       await axios.post(
-        "http://localhost:8080/api/consignments/add-consignment",
+        "http://14.225.210.143:8080/api/consignments/add-consignment",
         consignmentData,
         {
           headers: {
@@ -43,7 +43,7 @@ function ConfirmConsign() {
   const fetchKoiById = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/koi-fishes/koiFish/${id}`,
+        `http://14.225.210.143:8080/api/koi-fishes/koiFish/${id}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
