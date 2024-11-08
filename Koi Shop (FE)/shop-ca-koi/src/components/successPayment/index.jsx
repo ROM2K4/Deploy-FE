@@ -72,11 +72,11 @@ const PaymentSuccess = () => {
       try {
         await axios.put(
           `http://14.225.210.143:8080/api/orders/${orderId}/update-status`,
-          null, // Tham số body không cần thiết ở đây
+          null, 
           {
-            params: { status }, // Truyền tham số status qua query params
+            params: { status }, 
             headers: {
-              Authorization: `Bearer ${user.token}`, // Gửi token trong header
+              Authorization: `Bearer ${user.token}`, 
             },
           }
         );
@@ -86,9 +86,9 @@ const PaymentSuccess = () => {
       }
     };
 
-    // Nếu thanh toán thất bại hoặc bị hủy
+    
     if (vnpResponseCode !== "00") {
-      // Cập nhật trạng thái đơn hàng là "FAIL"
+      
       updateOrderStatus("FAIL"); 
       navigate("/payment-failed", { replace: true });
       return;
@@ -107,9 +107,9 @@ const PaymentSuccess = () => {
         setOrder(response.data);
         setLoading(false);
 
-        // Gọi hàm thêm giao dịch
-        await addTransaction(); // Gọi hàm thêm giao dịch sau khi nhận được đơn hàng
-        await updateOrderStatus("PAID"); // Giả sử trạng thái là PAID
+        
+        await addTransaction(); 
+        await updateOrderStatus("PAID");
         if (points) {
           await updateUserPoints(points);
         }
@@ -123,18 +123,18 @@ const PaymentSuccess = () => {
       try {
         await apiOrder.post(`${orderId}/transaction`, {}, {
           headers: {
-            Authorization: `Bearer ${user.token}`, // Gửi token trong header
+            Authorization: `Bearer ${user.token}`, 
           },
         });
       } catch (error) {
         console.log("Error adding transaction:", error);
-        // Có thể thêm thông báo lỗi nếu cần
+       
       }
     };
 
     
 
-    // Fetch order details only if payment was successful
+    
     fetchOrder();
   }, [orderId, navigate, user.token, points]);
 

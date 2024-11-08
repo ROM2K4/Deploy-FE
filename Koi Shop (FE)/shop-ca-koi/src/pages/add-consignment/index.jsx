@@ -9,10 +9,10 @@ import axios from "axios";
 
 
 function AddConsignment() {
-  const [koisId, setKoisId] = useState(""); // Thay đổi tên biến để phản ánh rằng nó chứa ID
+  const [koisId, setKoisId] = useState(""); 
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const [breeds, setBreeds] = useState([]); // State để lưu danh sách breed
+  const [breeds, setBreeds] = useState([]); 
   const [origins, setOrigins] = useState([]);
 
 
@@ -20,10 +20,10 @@ function AddConsignment() {
     try {
       const response = await apiKoi.post("fish-consign", values, {
         headers: {
-          Authorization: `Bearer ${user.token}`, // Gửi token trong header
+          Authorization: `Bearer ${user.token}`, 
         },
       });
-      setKoisId(response.data); // Giả định rằng API trả về id
+      setKoisId(response.data); 
       toast.success("Add successfully!");
 
 
@@ -38,13 +38,13 @@ function AddConsignment() {
       const response = await apiKoi.get(
         "http://14.225.210.143:8080/api/breeds/list-breedName",
         {
-          // Giả sử API lấy danh sách breed là /breeds
+          
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }
       );
-      setBreeds(response.data); // Giả sử response.data là mảng danh sách breed
+      setBreeds(response.data); 
     } catch (e) {
       console.log(e);
     }
@@ -56,13 +56,13 @@ function AddConsignment() {
       const response = await axios.get(
         "http://14.225.210.143:8080/api/origin/list-originName",
         {
-          // Giả sử API lấy danh sách breed là /origin
+          
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }
       );
-      setOrigins(response.data); // Giả sử response.data là mảng danh sách origin
+      setOrigins(response.data); 
     } catch (e) {
       console.log(e);
     }

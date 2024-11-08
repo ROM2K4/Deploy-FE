@@ -18,7 +18,7 @@ import "./index.scss";
 import { CartContext } from "../../helper/CartContext";
 
 function DetailKoi() {
-  const [certificateImage, setCertificateImage] = useState(null); // Thay đổi state để chỉ lưu trữ image
+  const [certificateImage, setCertificateImage] = useState(null); 
 
   const [koiList, setKoiList] = useState([]);
   const navigate = useNavigate();
@@ -49,9 +49,9 @@ function DetailKoi() {
       image: koi.image,
       quantity: 1,
       price: koi.price,
-      type: "KoiFish", // Đánh dấu đây là sản phẩm batch, vì bạn có 2 loại sản phẩm: batch và koiFish
+      type: "KoiFish", 
     };
-    addToCart(product); // Thêm sản phẩm vào giỏ hàng
+    addToCart(product); 
   };
 
   const { addToCart } = useContext(CartContext);
@@ -78,7 +78,7 @@ function DetailKoi() {
   const fetchCertificateById = async (id) => {
     try {
       const response = await axios.get(
-        `http://14.225.210.143:8080/api/certificates/${id}/fish-certificate`, // Đảm bảo URL đúng
+        `http://14.225.210.143:8080/api/certificates/${id}/fish-certificate`, 
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -95,14 +95,14 @@ function DetailKoi() {
     try {
       const response = await apiKoi.get(`list?page=${page}`, {
         headers: {
-          Authorization: `Bearer ${user.token}`, // Gửi token trong header
+          Authorization: `Bearer ${user.token}`, 
         },
       });
-      setKoiList(response.data.content); // Lưu danh sách cá koi
+      setKoiList(response.data.content); 
 
-      setTotalPages(response.data.totalPages); // Cập nhật tổng số trang
+      setTotalPages(response.data.totalPages); 
     } catch (e) {
-      console.log(e); // Ghi lại lỗi không phải axios
+      console.log(e); 
     }
   };
 
@@ -110,13 +110,13 @@ function DetailKoi() {
     try {
       const response = await apiKoi.get(`${breed}?page=${page}`, {
         headers: {
-          Authorization: `Bearer ${user.token}`, // Gửi token trong header
+          Authorization: `Bearer ${user.token}`, 
         },
       });
-      setKoiList(response.data.content); // Lưu danh sách cá koi
-      setTotalPages(response.data.totalPages); // Cập nhật tổng số trang
+      setKoiList(response.data.content); 
+      setTotalPages(response.data.totalPages); 
     } catch (e) {
-      console.log(e); // Ghi lại lỗi không phải axios
+      console.log(e); 
     }
   };
 
@@ -125,20 +125,20 @@ function DetailKoi() {
       const response = await apiKoi.get(
         "http://14.225.210.143:8080/api/breeds/list-breedName",
         {
-          // Giả sử API lấy danh sách breed là /breeds
+          
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }
       );
-      setBreeds(response.data); // Giả sử response.data là mảng danh sách breed
+      setBreeds(response.data); 
     } catch (e) {
       console.log(e);
     }
   };
 
   const handleCompare = (compareId) => {
-    navigate(`/koi-comparison/${id}/${compareId}`); // Điều hướng đến trang so sánh với id hiện tại và compareId
+    navigate(`/koi-comparison/${id}/${compareId}`); 
   };
 
   useEffect(() => {
@@ -157,19 +157,19 @@ function DetailKoi() {
     });
 
     if (selectedBreed === "All") {
-      fetchKoiList(page); // Gọi hàm fetch cho "All"
+      fetchKoiList(page); 
     } else {
-      fetchKoiByBreed(selectedBreed, page); // Gọi hàm fetch cho breed đã chọn
+      fetchKoiByBreed(selectedBreed, page); 
     }
   }, [id, page, selectedBreed]);
 
   const handlePageChange = (newPage) => {
-    setPage(newPage); // Cập nhật số trang
+    setPage(newPage); 
   };
 
   const handleBreedChange = (value) => {
-    setSelectedBreed(value); // Cập nhật breed đã chọn
-    setPage(0); // Reset về trang đầu khi thay đổi breed
+    setSelectedBreed(value); 
+    setPage(0); 
   };
 
   if (loading) {

@@ -25,7 +25,7 @@ function RatingFeedback() {
     }
   }
 
-  // Hàm xóa Rating_Feedback
+  
 async function deleteRatingFeedback(id) {
   try {
     await axios.delete(`http://14.225.210.143:8080/api/ratings-feedbacks/${id}`, {
@@ -35,7 +35,7 @@ async function deleteRatingFeedback(id) {
     });
     message.success("Xóa feedback thành công!");
     
-    // Gọi lại loadRatingFeedbackList để cập nhật danh sách
+    
     loadRatingFeedbackList();
   } catch (error) {
     message.error("Lỗi khi xóa feedback.");

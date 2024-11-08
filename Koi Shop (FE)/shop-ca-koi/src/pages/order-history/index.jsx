@@ -14,7 +14,7 @@ function OrderHistory() {
         "http://14.225.210.143:8080/api/orders/list-user-orders/summary",
         {
           headers: {
-            Authorization: `Bearer ${user.token}`, // Gửi token trong header
+            Authorization: `Bearer ${user.token}`, 
           },
         }
       );

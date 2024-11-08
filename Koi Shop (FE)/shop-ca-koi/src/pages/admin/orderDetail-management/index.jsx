@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 function OrderDetailAdmin() {
-    const { id } = useParams(); // Lấy id từ URL
+    const { id } = useParams(); 
     const user = useSelector((state) => state.user);
     const [orderDetai, setOrderDetail] = useState([]);
     
@@ -56,7 +56,7 @@ function OrderDetailAdmin() {
           title: 'Đơn giá',
           dataIndex: 'unitPrice',
           key: 'unitPrice',
-          render: (price) => `${price.toLocaleString()} VND`, // Hiển thị đơn giá theo format tiền tệ
+          render: (price) => `${price.toLocaleString()} VND`, 
         },
       ];
   return (
@@ -65,7 +65,7 @@ function OrderDetailAdmin() {
     <Table 
       columns={columns} 
       dataSource={orderDetai} 
-      rowKey={(record) => record.orderDetailID} // Đặt rowKey theo orderDetailID
+      rowKey={(record) => record.orderDetailID} 
       bordered 
     />
   </div>

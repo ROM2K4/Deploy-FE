@@ -97,8 +97,8 @@ function ConfirmConsign() {
       )}
 
       <Radio.Group
-        onChange={(e) => setConsignmentTypes(e.target.value)} // Cập nhật giá trị khi thay đổi
-        value={consignmentTypes} // Sử dụng giá trị của loại ký gửi
+        onChange={(e) => setConsignmentTypes(e.target.value)} 
+        value={consignmentTypes} 
         style={{ marginBottom: "10px" }}
       >
         <Radio value="Online">Online</Radio>

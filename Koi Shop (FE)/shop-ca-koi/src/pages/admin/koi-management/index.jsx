@@ -11,6 +11,8 @@ import {
   message,
   notification,
   Select,
+  Upload,
+  Image,
 } from "antd";
 import Dashboard from "../../../components/dashboard";
 import { useEffect, useState } from "react";
@@ -20,15 +22,16 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import apiKoi from "../../../config/koi-api";
 
+
 function Koi() {
-  // Dữ liệu mẫu
+  
   const [dataSource, setDatasource] = useState([]);
   const [form] = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user = useSelector((state) => state.user);
-  const [breeds, setBreeds] = useState([]); // State để lưu danh sách breed
+  const [breeds, setBreeds] = useState([]); 
   const [origins, setOrigins] = useState([]);
-  // Hàm để thêm một con cá Koi mới
+  
   async function fetchKoi(data) {
     try {
       const response = await axios.post(
@@ -47,7 +50,7 @@ function Koi() {
     }
   }
 
-  // Hàm để tải danh sách các con cá Koi từ API
+  
   async function loadKoiList() {
     try {
       const response = await axios.get(
@@ -68,11 +71,10 @@ function Koi() {
     }
   }
 
-  // Hàm để xóa một con cá Koi
-  // Hàm để xóa một con cá Koi
+  
   const handleDeleteKoi = async (id) => {
     try {
-      // Thay đổi từ axios.delete sang axios.put để cập nhật trạng thái deleted
+      
       await axios.put(
         `http://14.225.210.143:8080/api/koi-fishes/${id}/delete`,
         {}, // body rỗng vì chỉ cập nhật trạng thái
@@ -82,7 +84,7 @@ function Koi() {
           },
         }
       );
-      // Cập nhật lại dataSource sau khi cập nhật trạng thái deleted
+      
       setDatasource((prevData) =>
         prevData.map(
           (koi) => (koi.id === id ? { ...koi, deleted: true } : koi) // Đánh dấu cá là đã xóa
@@ -95,10 +97,10 @@ function Koi() {
     }
   };
 
-  // Hàm để cập nhật trạng thái bán
+  
   const handleIsForSaleChange = async (id, currentStatus) => {
     try {
-      // Gửi yêu cầu cập nhật trạng thái isForSale
+      
       await axios.put(
         `http://14.225.210.143:8080/api/koi-fishes/${id}/updateIsForSale`,
         {},
@@ -108,7 +110,7 @@ function Koi() {
           },
         }
       );
-      // Cập nhật trạng thái mới trên giao diện
+      
       setDatasource((prevFishes) =>
         prevFishes.map((fish) =>
           fish.id === id ? { ...fish, isForSale: !currentStatus } : fish
@@ -121,7 +123,7 @@ function Koi() {
     }
   };
 
-  // Cột cho bảng cá Koi
+  
   const columns = [
     {
       title: "Fish Name",
@@ -174,7 +176,7 @@ function Koi() {
             <Button type="default">Detail</Button>
           </Link>
 
-          {/* Hiển thị trạng thái đã xóa hoặc nút xóa */}
+          
           {record.deleted ? (
             <Button>
               <span style={{ color: "red" }}>Is Delete</span>
@@ -183,7 +185,7 @@ function Koi() {
             <Button
               type="primary"
               danger
-              onClick={() => handleDeleteKoi(record.id)} // Gọi hàm update deleted
+              onClick={() => handleDeleteKoi(record.id)} 
               style={{ marginRight: 8 }}
             >
               Delete
@@ -198,6 +200,43 @@ function Koi() {
     },
   ];
 
+  // const [previewOpen, setPreviewOpen] = useState(false);
+  // const [previewImage, setPreviewImage] = useState("");
+  // const [fileList, setFileList] = useState([]);
+  // const getBase64 = (file) =>
+  //   new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => resolve(reader.result);
+  //     reader.onerror = (error) => reject(error);
+  //   });
+  // const handlePreview = async (file) => {
+  //   if (!file.url && !file.preview) {
+  //     file.preview = await getBase64(file.originFileObj);
+  //   }
+  //   setPreviewImage(file.url || file.preview);
+  //   setPreviewOpen(true);
+  // };
+  // const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  // const uploadButton = (
+  //   <button
+  //     style={{
+  //       border: 0,
+  //       background: "none",
+  //     }}
+  //     type="button"
+  //   >
+  //     <PlusOutlined />
+  //     <div
+  //       style={{
+  //         marginTop: 8,
+  //       }}
+  //     >
+  //       Upload
+  //     </div>
+  //   </button>
+  // );
+
   const handleshowModal = () => {
     setIsModalOpen(true);
   };
@@ -211,6 +250,8 @@ function Koi() {
   };
 
   const handleSubmit = (values) => {
+    console.log(values);
+    
     fetchKoi(values);
     form.resetFields();
     handleHideModel();
@@ -236,7 +277,7 @@ function Koi() {
           },
         }
       );
-      setBreeds(response.data); // Giả sử response.data là mảng danh sách breed
+      setBreeds(response.data); 
     } catch (e) {
       console.log(e);
     }
@@ -253,7 +294,7 @@ function Koi() {
           },
         }
       );
-      setOrigins(response.data); // Giả sử response.data là mảng danh sách origin
+      setOrigins(response.data); 
     } catch (e) {
       console.log(e);
     }
@@ -393,10 +434,11 @@ function Koi() {
                 { required: true, message: "Vui lòng nhập URL hình ảnh" },
               ]}
             >
-              <Input placeholder="Nhập URL hình ảnh" />
+              <Input/>
             </Form.Item>
           </Form>
         </Modal>
+        
       </Dashboard>
     </div>
   );

@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 function User() {
-  const [dataSource, setDataSource] = useState([]); // State to store user list
+  const [dataSource, setDataSource] = useState([]); 
   const user = useSelector((state) => state.user);
-  const navigate = useNavigate(); // Hook để điều hướng đến trang chi tiết người dùng
+  const navigate = useNavigate(); 
 
   // Fetch user list
   async function loadUserList() {
@@ -28,12 +28,12 @@ function User() {
     }
   }
 
-  // Call loadUserList when the component is mounted
+  
   useEffect(() => {
     loadUserList();
-  }, []); // Only run once when the component is mounted
+  }, []); 
 
-  // Handle deleting user
+  
   const deleteUser = async (userID) => {
     try {
       const response = await axios.delete(
@@ -44,9 +44,9 @@ function User() {
           },
         }
       );
-      // Kiểm tra nếu API trả về thành công
+      
       if (response.status === 200 || response.status === 204) {
-        // Cập nhật lại state `dataSource` bằng cách lọc bỏ người dùng đã xóa
+        
         setDataSource((prevDataSource) =>
           prevDataSource.filter((user) => user.id !== userID)
         );
@@ -61,7 +61,7 @@ function User() {
     }
   };
 
-  // Navigate to user detail page
+  
   const viewUserDetails = (userID) => {
     navigate(`/home/dashboard/user/${userID}/detail`);
   };

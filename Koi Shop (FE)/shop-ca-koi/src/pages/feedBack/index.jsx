@@ -16,7 +16,7 @@ function FeedBackUI() {
         "http://14.225.210.143:8080/api/ratings-feedbacks/list-ratingsfeedbacks",
         {
           headers: {
-            Authorization: `Bearer ${user.token}`, // Gửi token trong header
+            Authorization: `Bearer ${user.token}`, 
           },
         }
       );
@@ -41,7 +41,7 @@ function FeedBackUI() {
         {feedBacks.map((fb) => (
           <div className="fb-form" key={fb.id}>
             {" "}
-            {/* Thêm key nếu có trường id */}
+            
             <p>
               <strong>Khách hàng: </strong>
               {fb.userName}
